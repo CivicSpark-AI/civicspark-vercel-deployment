@@ -1,4 +1,5 @@
 import json
+
 import logging
 import time
 from contextlib import asynccontextmanager
@@ -138,8 +139,8 @@ if __name__ == "__main__":
 
     uvicorn.run(
         "app.main:app",
-        host="0.0.0.0",  # nosec B104 - Intentional for development/Docker
-        port=8000,
+        host="0.0.0.0",  # keep this for Docker/Render
+        port=int(os.environ.get("PORT", 8000)),  # dynamic port
         reload=settings.debug,
         log_level="info" if settings.debug else "warning",
     )
