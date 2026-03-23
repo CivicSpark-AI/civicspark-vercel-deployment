@@ -5,9 +5,13 @@
 
 // Get the base URL for API calls
 const getApiBaseUrl = (): string => {
-  // In development and production, use relative URLs
-  // Vite proxy handles development, CloudFront handles production
-  return '';
+  // Use environment variable if available (Vercel production)
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+
+  // Fallback to localhost for development
+  return 'http://localhost:8000';
 };
 
 export const API_BASE_URL = getApiBaseUrl();
