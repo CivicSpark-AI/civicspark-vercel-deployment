@@ -4,17 +4,7 @@
  */
 
 // Get the base URL for API calls
-const getApiBaseUrl = (): string => {
-  // Use environment variable if available (Vercel production)
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
-  }
-
-  // Fallback to localhost for development
-  return import.meta.env.VITE_API_URL;
-
-};
-export const API_BASE_URL = getApiBaseUrl();
+export const API_BASE_URL = "https://civicspark-vercel-deployment-1.onrender.com"; 
 
 export const API_ENDPOINTS = {
   // Meetings
