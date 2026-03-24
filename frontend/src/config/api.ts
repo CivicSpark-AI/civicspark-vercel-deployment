@@ -7,9 +7,7 @@
 export const API_BASE_URL = (() => {
   const url = import.meta.env.VITE_BACKEND_URL;
   if (!url) {
-    throw new Error(
-      'BACKEND_URL is not defined. Set it in your environment variables.'
-    );
+    throw new Error('VITE_BACKEND_URL is not defined!');
   }
   return url;
 })();
