@@ -34,6 +34,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+export const apiapiFetch = (path: string, options?: RequestInit) => {
+  return apiFetch(`${API_BASE_URL}${path}`, options);
+};
+
   useEffect(() => {
     // Check if user is logged in on app start
     const token = localStorage.getItem('token');
@@ -48,7 +52,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/v1/auth/login/email', {
+      const response = await apiFetch('/api/v1/auth/login/email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +78,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const register = async (userData: RegisterData) => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/v1/auth/register', {
+      const response = await apiFetch('/api/v1/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
