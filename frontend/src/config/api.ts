@@ -4,13 +4,15 @@
  */
 
 // Get the base URL for API calls
-export const API_BASE_URL = (() => {
-  const url = import.meta.env.VITE_BACKEND_URL;
-  if (!url) {
-    throw new Error('VITE_BACKEND_URL is not defined!');
+const getApiBaseUrl = (): string => {
+  // Use environment variable if available (Vercel production)
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
   }
-  return url;
-})();
+
+  // Fallback to localhost for development
+  return 'http://localhost:8000';
+};
 export const API_BASE_URL = getApiBaseUrl();
 
 export const API_ENDPOINTS = {
