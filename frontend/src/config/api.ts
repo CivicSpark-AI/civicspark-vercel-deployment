@@ -5,15 +5,14 @@
 
 // Get the base URL for API calls
 const getApiBaseUrl = (): string => {
-  // Use environment variable if available (Vercel production)
-  if (process.env.NEXT_PUBLIC_API_URL) {
-    return process.env.NEXT_PUBLIC_API_URL;
+  const url = process.env.NEXT_PUBLIC_API_URL;
+  if (!url) {
+    throw new Error( 
+      'NEXT_PUBLIC_API_URL is not defined. Please set it in your environment variables.'
+    );
   }
-
-  // Fallback to localhost for development
-  return 'http://localhost:8000';
+  return url;
 };
-
 export const API_BASE_URL = getApiBaseUrl();
 
 export const API_ENDPOINTS = {
