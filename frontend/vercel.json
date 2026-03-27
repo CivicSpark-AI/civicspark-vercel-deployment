@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://civicspark-vercel-deployment-1.onrender.com/api/$1"
+    }
+  ]
+}
