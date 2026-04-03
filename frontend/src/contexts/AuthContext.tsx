@@ -47,7 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`/api/v1/auth/login/email`, {
+      const response = await fetch(`https://civicspark-vercel-deployment-1.onrender.com/api/v1/auth/login/email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const register = async (userData: RegisterData) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`/api/v1/auth/register`, {
+      const response = await fetch(`https://civicspark-vercel-deployment-1.onrender.com/api/v1/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
